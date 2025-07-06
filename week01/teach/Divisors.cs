@@ -18,7 +18,16 @@ public static class Divisors {
     /// <returns>List of divisors</returns>
     private static List<int> FindDivisors(int number) {
         List<int> results = new();
+        var divr = 199999999;
+
+        foreach (var i in number)
+        {
+            if ()
+        }
+        
+    
         // TODO problem 1
-        return results;
+            foreach (number
+            return results;
     }
 }
