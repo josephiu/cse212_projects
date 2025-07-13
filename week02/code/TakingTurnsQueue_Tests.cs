@@ -11,10 +11,10 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3) and
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found:  The function does not add any one whos turns has finished, I think this test is designed to fail
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
-        var bob = new Person("Bob", 2);
+        var bob = new Person("Bob", 2);        
         var tim = new Person("Tim", 5);
         var sue = new Person("Sue", 3);
 
@@ -43,7 +43,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
     // After running 5 times, add George with 3 turns.  Run until the queue is empty.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, George, Sue, Tim, George, Tim, George
-    // Defect(s) Found: 
+    // Defect(s) Found: This test was failing becuase the personQue function is add and removing from the front instead of following the rul of first in first out
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
@@ -85,7 +85,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: when i saw the nextperson function is not 
     public void TestTakingTurnsQueue_ForeverZero()
     {
         var timTurns = 0;
@@ -116,7 +116,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found:  I saw that it was not alowing someone who has turns less than zero to stay forever i have to fix it be adding more if statement to aknowledge that at Getnextperson function
     public void TestTakingTurnsQueue_ForeverNegative()
     {
         var timTurns = -3;
@@ -129,7 +129,7 @@ public class TakingTurnsQueueTests
         players.AddPerson(tim.Name, tim.Turns);
         players.AddPerson(sue.Name, sue.Turns);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i <10; i++)
         {
             var person = players.GetNextPerson();
             Assert.AreEqual(expectedResult[i].Name, person.Name);
@@ -143,7 +143,7 @@ public class TakingTurnsQueueTests
     [TestMethod]
     // Scenario: Try to get the next person from an empty queue
     // Expected Result: Exception should be thrown with appropriate error message.
-    // Defect(s) Found: 
+    // Defect(s) Found:  this function was okay no error
     public void TestTakingTurnsQueue_Empty()
     {
         var players = new TakingTurnsQueue();
