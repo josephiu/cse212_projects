@@ -32,17 +32,39 @@ public class Maze
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+           // Get the current cell's valid directions
+        bool[] directions = _mazeMap[(_currX, _currY)];
+
+        // Index 0 = Left
+        if (!directions[0])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        // Update the position to move left
+        _currX--;
     }
+    
 
     /// <summary>
     /// Check to see if you can move right.  If you can, then move.  If you
     /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
     /// </summary>
-    public void MoveRight()
+       public void MoveRight()
     {
-        // FILL IN CODE
+        // Get the current cell's valid directions
+        bool[] directions = _mazeMap[(_currX, _currY)];
+
+        // Index 1 = Right
+        if (!directions[1])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        // Update the position to move right
+        _currX++;
     }
+
 
     /// <summary>
     /// Check to see if you can move up.  If you can, then move.  If you
@@ -50,7 +72,17 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+           // Get the current cell's valid directions
+        bool[] directions = _mazeMap[(_currX, _currY)];
+
+        // Index 2 = Up
+        if (!directions[2])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        // Update the position to move up
+        _currY--;
     }
 
     /// <summary>
@@ -59,9 +91,19 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
-    }
+       // Get the current cell's valid directions
+        bool[] directions = _mazeMap[(_currX, _currY)];
 
+        // Index 3 = Down
+        if (!directions[3])
+        {
+            throw new InvalidOperationException("cant go that way!");
+        }
+
+        // Update the position to move down
+        _currY++;
+    }
+   /// Returns the current position inside the maze.
     public string GetStatus()
     {
         return $"Current location (x={_currX}, y={_currY})";
