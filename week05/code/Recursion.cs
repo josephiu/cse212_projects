@@ -14,11 +14,13 @@ public static class Recursion
     /// </summary>
     public static int SumSquaresRecursive(int n)
     {
-        if (n <= 0)
+        if (n <= 0)   //for me this is my smallest base case i can use.
         {
             return 0;
         }
-        return SumSquaresRecursive (n - 1) + (n * n);
+        return SumSquaresRecursive(n - 1) + (n * n); // this is me calling my function again (recursion)
+        
+
 
         
     }
@@ -44,9 +46,22 @@ public static class Recursion
     /// </summary>
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
-        // TODO Start Problem 2
+           // For my Base case if the word has reached the desired size, add it to results
+    if (word.Length == size)
+    {
+        results.Add(word);
+        return;
     }
 
+    // here i am using foreach loop for this Recursive case to try each unused letter
+    foreach (char c in letters)
+    {
+        if (!word.Contains(c)) // helps me ensures letters are not reused
+        {
+            PermutationsChoose(results, letters, size, word + c);
+        }
+    }
+}
     /// <summary>
     /// #############
     /// # Problem 3 #
